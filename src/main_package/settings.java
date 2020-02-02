@@ -5,8 +5,8 @@
  */
 package main_package;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,12 +14,4 @@ import java.awt.Toolkit;
  */
 public class settings {
 
-    /**
-     *function to set models at the center of the screen
-     */
-    public void dim (){
-//        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-//        this.setLocation(d.width/2 - this.getSize().width/2, d.height/2 - this.getSize().height/2);
-    }
-    
 }

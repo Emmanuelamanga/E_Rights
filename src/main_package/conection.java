@@ -36,23 +36,25 @@ public class conection {
         }
         return null;
     }
+    
 
     public boolean authenticate(String username, String pass) {
 //        System.out.println(username+" "+pass);
-        if ("".equals(username) || "".equals(pass)) {
-            JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD CANNOT BE EMPTY", "Login Error ", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } else {
+        if ((!username.isEmpty() && username != null) && (!pass.isEmpty() && pass != null)) {
             //        var declaration
             String sql;
-            sql = "SELECT * FROM e_rights.users WHERE user_name='" + username + "'AND password='" + pass + "'";
+            sql = "SELECT * FROM e_rights.users WHERE user_name='" + username + "'AND password='" + pass + "' LIMIT 1";
             try {
-                ResultSet results = new conection().con().executeQuery(sql);
-                if (results.equals("")) {
-                    JOptionPane.showMessageDialog(null, "INCORRECT USERNAME OR PASSWORD", "login error", JOptionPane.WARNING_MESSAGE);
-                    return false;
+                ResultSet rs = new conection().con().executeQuery(sql);
+                if (rs.next()) {
+                    System.out.println(rs.getInt("user_id"));
+//                    set approver
+               
+//                    return true
+                     return true;
                 } else {
-                    return true;
+                    JOptionPane.showMessageDialog(null, "INCORRECT USERNAME OR PASSWORD", "login error", JOptionPane.WARNING_MESSAGE);
+                    return false;                   
                 }
 
             } catch (SQLException ex) {
@@ -60,9 +62,10 @@ public class conection {
                 JOptionPane.showMessageDialog(null, "NO SUCH USER\n" + ex, "login error", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
-
+        } else {
+            JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD CANNOT BE EMPTY", "Login Error ", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-
     }
 
 //    test 
