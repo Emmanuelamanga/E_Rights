@@ -50,7 +50,7 @@ public class Rights_form extends javax.swing.JFrame {
         aprovertxt = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USER RIGHTS DETAILS");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N

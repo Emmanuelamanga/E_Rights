@@ -15,8 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class thread_file implements Runnable {
 //  variable declaration
+
     private Thread t;
-    
+
     @Override
     @SuppressWarnings("SleepWhileInLoop")
     public void run() {
@@ -34,14 +35,14 @@ public class thread_file implements Runnable {
         } catch (InterruptedException e) {
             JOptionPane.showMessageDialog(null, "!!!\n" + e, "WARNING", JOptionPane.ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "All Is Set !", "INFO", JOptionPane.INFORMATION_MESSAGE);
-//        close splash
+        //        close splash
         sp.dispose();
-//        start the rights form
-        new control().setVisible(true);
+        JOptionPane.showMessageDialog(null, "All Is Set !", "INFO", JOptionPane.INFORMATION_MESSAGE);
+ 
     }
+
     /**
-     *start thread
+     * start thread
      */
     public void start() {
         if (t == null) {

@@ -5,13 +5,29 @@
  */
 package main_package;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  *
  * @author Doreen Midecha
  */
 public class settings {
+//    variable declarations 
+    public String logon_user;
+    settings(String user){
+        this.logon_user = user;
+    }
+    
+
+//    set logged on user
+    /**
+     *
+     * @param user
+     */
+//    public void set_usr(String user){
+//        this.logon_user = user;
+//    }
+//    get logged in user
+    public String get_usr(){
+        return this.logon_user;
+    }
 
 }
