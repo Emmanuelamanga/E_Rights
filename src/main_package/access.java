@@ -6,6 +6,7 @@
 package main_package;
 
 import file_op.FileOperations;
+import java.awt.Cursor;
 import java.util.Date;
 
 /**
@@ -22,8 +23,10 @@ public class access extends javax.swing.JFrame {
      */
     public access() {
         initComponents();
-        email_group_txt.disable();
-        folder_txt.disable();
+         email_group_txt.setCursor(new Cursor(1));
+         folder_txt.setCursor(new Cursor(1));
+        email_group_txt.setEditable(false);
+        folder_txt.setEditable(false);
     }
 
     /**
@@ -96,6 +99,12 @@ public class access extends javax.swing.JFrame {
         email_group_txt.setRows(5);
         email_group_txt.setTabSize(4);
         email_group_txt.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        email_group_txt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        email_group_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                email_group_txtMouseEntered(evt);
+            }
+        });
         jScrollPane1.setViewportView(email_group_txt);
 
         login_user_pass_chk.setText("Yes");
@@ -217,14 +226,16 @@ public class access extends javax.swing.JFrame {
 
     private void email_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_chkActionPerformed
         if (email_chk.isEnabled()) {
-            email_group_txt.enable();
-            System.out.println("Email set");
+            email_group_txt.setEditable(true);
+            email_group_txt.setCursor(new Cursor(2));
+//            System.out.println("Email set");
         }
     }//GEN-LAST:event_email_chkActionPerformed
 
     private void folder_chkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_folder_chkActionPerformed
         if (folder_chk.isEnabled()) {
-            folder_txt.enable();
+            folder_txt.setEditable(true);
+            folder_txt.setCursor(new Cursor(2));
         }
     }//GEN-LAST:event_folder_chkActionPerformed
 
@@ -282,6 +293,10 @@ public class access extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_commit_btnActionPerformed
+
+    private void email_group_txtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_group_txtMouseEntered
+//        email_group_txt.setCursor(new Cursor(1));
+    }//GEN-LAST:event_email_group_txtMouseEntered
 
     /**
      * @param args the command line arguments

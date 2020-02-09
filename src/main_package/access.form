@@ -236,7 +236,13 @@
                     <EtchetBorder bevelType="0"/>
                   </Border>
                 </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="email_group_txtMouseEntered"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
