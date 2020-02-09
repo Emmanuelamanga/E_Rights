@@ -111,6 +111,7 @@ public class access extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ACCESS RIGHTS");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -150,8 +151,8 @@ public class access extends javax.swing.JFrame {
                                     .addComponent(quit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(commit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))))
                     .addGroup(acsess_panel_contentLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         acsess_panel_contentLayout.setVerticalGroup(
@@ -222,10 +223,11 @@ public class access extends javax.swing.JFrame {
     }//GEN-LAST:event_folder_chkActionPerformed
 
     private void quit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quit_btnActionPerformed
-       //       display control
-        new control().setVisible(true);
-//        dispose this jframe
-         dispose();       
+      //        dispose this jframe
+         dispose();  
+//       display control
+        new login().setVisible(true);
+      
                   
     }//GEN-LAST:event_quit_btnActionPerformed
 

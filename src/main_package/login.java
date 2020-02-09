@@ -11,7 +11,7 @@ package main_package;
  */
 public class login extends javax.swing.JFrame implements Runnable {
 //    variable declarations
-
+    thread_file_2 tf;
     conection cn;
 
     /*
@@ -21,6 +21,7 @@ public class login extends javax.swing.JFrame implements Runnable {
         this.cn = new conection();
         cn.con();
         initComponents();
+        this.tf = new thread_file_2(new splash(),40,new Rights_form());
     }
 
     /**
@@ -169,13 +170,9 @@ public class login extends javax.swing.JFrame implements Runnable {
 //       authenticate log  in
         if (cn.authenticate(usernametxt.getText(), passwordtxt.getText())) {
             //            start splash
-            thread_file tf;
-            tf = new thread_file();
             tf.start();
-
 //        set current user
-            control cont = new control("logged in user : " + usernametxt.getText() + "\n");
-            cont.setVisible(true);
+         new control("logged in user : " + usernametxt.getText() + "\n");
         }
 //        close log in frame                
         dispose();

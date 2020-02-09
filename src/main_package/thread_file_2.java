@@ -19,10 +19,10 @@ public class thread_file_2 implements Runnable {
     public JFrame frm, nxtjf;
     public String[] jlb;
     private Thread thread;
-    private int sleep_time;
+    private long sleep_time;
     
 //    constructors
-    public thread_file_2(JFrame jf,int st,JFrame njf){
+    public thread_file_2(JFrame jf,long st,JFrame njf){
         this.frm = jf;
         this.sleep_time = st;
         this.jlb = null;
@@ -36,12 +36,15 @@ public class thread_file_2 implements Runnable {
         try {
 //         display the splash
             frm.setVisible(true);
-//            delay for sleep_time amount of time
-            Thread.sleep(sleep_time);
+             for (int i = 0; i <= 100; i++) {
+               //            delay for sleep_time amount of time
+                Thread.sleep(sleep_time);  
+             }
+
 //            dispose the splash frame
             frm.dispose();
 //            display success message
-             JOptionPane.showMessageDialog(null, "Data successfully appended at the end of file", "File", JOptionPane.INFORMATION_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Loading Complete", "File", JOptionPane.INFORMATION_MESSAGE);
 //           prompt next JFrame
                 nxtjf.setVisible(true);
         } catch (InterruptedException e) {

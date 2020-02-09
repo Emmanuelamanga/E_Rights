@@ -6,6 +6,7 @@
 package main_package;
 
 import file_op.FileOperations;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +17,15 @@ public class Rights_form extends javax.swing.JFrame {
 //    variable declarations 
 
     FileOperations fo;
+    thread_file_2 tf;
 
     /**
      * Creates new form Rights_form
      */
     public Rights_form() {
         initComponents();
+        tf = new thread_file_2(new writing_splash(), 40, new access());
+        
     }
 
     /**
@@ -102,6 +106,7 @@ public class Rights_form extends javax.swing.JFrame {
             }
         });
 
+        dept_combo.setEditable(true);
         dept_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "GB", "SALES", "FINANCE", "ADJUDICATOR", "ICT", "" }));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -123,24 +128,18 @@ public class Rights_form extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dept_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dept_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(user_name_txt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(user_type_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(user_type_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(right_form_submit_btn)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(exit_right_form_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(region_combo, 0, 175, Short.MAX_VALUE)
-                                            .addComponent(designation_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                            .addComponent(user_name_txt))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(right_form_submit_btn)
+                                .addGap(39, 39, 39)
+                                .addComponent(exit_right_form_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(region_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(designation_txt)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(aprovertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -185,9 +184,10 @@ public class Rights_form extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,8 +195,7 @@ public class Rights_form extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,15 +212,13 @@ public class Rights_form extends javax.swing.JFrame {
 
     private void exit_right_form_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_right_form_btnActionPerformed
 //       clear all the fields
-
+        
 //      close the rights form jframe prompt login
         dispose();
-//        enable the control buttons
-//        control.newuserbtn.setEnabled(true);
-//        control.existinguserbtn.setEnabled(true);
-
-//        delete last appended line
-
+        
+//        display login frame
+        new login().setVisible(true);
+        
     }//GEN-LAST:event_exit_right_form_btnActionPerformed
 
     private void right_form_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_right_form_submit_btnActionPerformed
@@ -244,26 +241,41 @@ public class Rights_form extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Empty values are not accepted !!");
         } else {
 //            re-format data
+            Date dt = new Date();
+            String date = dt.toString();
             String reg = "REGION_ _ _ _: " + region;
             String usr = "USER_ _ _ _ _: " + desig + " " + user;
-            String dp  = "DEPARTMENT_ _: " + dept;
-            String ut  = "USER TYPE_ _ : " + usertype;
-//            create file
+            String dp = "DEPARTMENT_ _: " + dept;
+            String ut = "USER TYPE_ _ : " + usertype;
             fo = new FileOperations(user);
-            fo.createFile();
-            
+//            check if file exists proceed
+            if (fo.fileExists()) {
+//                close this frmae 
+                dispose();
+//                display the message
+                JOptionPane.showMessageDialog(rootPane, "File already exits Proceed");
+//              open applications file 
+                new access().setVisible(true);
+            } else {
+//          create file
+                boolean file = fo.createFile();
+//          start file thread
+                tf.start();
 //          write to file
-            String[] results = {reg, usr, dp, ut};
-            fo.writeToFile(results);
+                if (file) {
+
+//                write to file
+                    String[] results = {date, " ", reg, usr, dp, ut};
+                    fo.writeToFile(results);
+                }
+
+                //      dispose  current jframe
+                dispose();
+            }
+
 //            for (String result : results) {
 //               System.out.println(result);
-//            }
-
-//      launch rights_request_form
-            new access().setVisible(true);
-//      dispose  current jframe
-            dispose();
-
+//            }  
         }
 
 //         fetch rights request form

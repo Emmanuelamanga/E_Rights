@@ -1,0 +1,6 @@
+Sun Feb 09 22:34:03 EAT 2020
+ 
+REGION_ _ _ _: MSA
+USER_ _ _ _ _: rev admin
+DEPARTMENT_ _: FINANCE
+USER TYPE_ _ : New

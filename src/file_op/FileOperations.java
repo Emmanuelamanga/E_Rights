@@ -24,26 +24,36 @@ public class FileOperations {
         path = "C:\\Users\\Doreen Midecha\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + fn + ".txt";
         file = new File(path);
     }
+    
+    public boolean fileExists(){
+        return file.exists();
+    }
 
     /**
      * Constructs a new file
      *
+     * @return boolean
      */
-    public void createFile() {
+    public boolean createFile() {
         try {
 //            create new file      
             fvar = file.createNewFile();
             if (fvar) {
                 JOptionPane.showMessageDialog(null, "File is ready for processing", "File", JOptionPane.INFORMATION_MESSAGE);
 //	          System.out.println("File has been created successfully");
+                return true;
             } else {
-                JOptionPane.showMessageDialog(null, "File already present at the specified location", "File", JOptionPane.WARNING_MESSAGE);
-//	          System.out.println("File already present at the specified location");
+
+                JOptionPane.showMessageDialog(null, "File already present at the specified location", "File", JOptionPane.INFORMATION_MESSAGE);
+//	          System.out.println("File already present at the specified location"); 
+                return true;
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Exception Occurred: \n" + e, "File", JOptionPane.ERROR_MESSAGE);
 //    		System.out.println("Exception Occurred: "+e);
+            return false;
         }
+
     }
 
     /**
@@ -52,35 +62,39 @@ public class FileOperations {
      * @param content
      */
     public void writeToFile(String[] content) {
+//        variable declaration
+        PrintWriter pw;
+        BufferedWriter bw;
+        FileWriter fw;
         try {
 //          re-create file if doesnt exist
             if (!file.exists()) {
                 file.createNewFile();
-            }            
-            FileWriter fw = new FileWriter(file, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            //This will add a new line to the file content
-            try (PrintWriter pw = new PrintWriter(bw)) {
-//                 use a loop to write to file
-                for (int i = 0; i < content.length; i++) {
-                    String string = content[i];
-                   pw.println(string); 
-                }               
-                
-            }catch(Exception e){
-                 JOptionPane.showMessageDialog(null, "Exception Occurred: \n" + e, "File", JOptionPane.ERROR_MESSAGE);
             }
-             JOptionPane.showMessageDialog(null,"Data successfully appended at the end of file" , "File", JOptionPane.INFORMATION_MESSAGE);
-//            System.out.println("Data successfully appended at the end of file");
-            
+            fw = new FileWriter(file, true);
+            bw = new BufferedWriter(fw);
+            pw = new PrintWriter(bw);
+//This will add a new line to the file content
+            if (file.length() != 0) {
+                pw.println("");
+            }            
+//                 use a loop to write to file
+            for (String content1 : content) {
+//                String string = content[i];
+                pw.println(content1);
+            }
+            pw.close();
+//            JOptionPane.showMessageDialog(null, "Data successfully appended at the end of file", "File", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Data successfully appended at the end of file");
+
         } catch (IOException ioe) {
-             JOptionPane.showMessageDialog(null, "Exception Occurred: \n" + ioe, "File", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Exception Occurred: \n" + ioe, "File", JOptionPane.ERROR_MESSAGE);
 //            System.out.println("Exception occurred: \n" + ioe);
         }
     }
-    
-    public void readFile(){
-        
+
+    public void readFile() {
+
     }
 
 //    public static void main(String[]args){

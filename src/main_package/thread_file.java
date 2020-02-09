@@ -30,7 +30,7 @@ public class thread_file implements Runnable {
 //                update the percentage
                 sp.persentagetxt.setText(Integer.toString(i) + "%");
 //                set delay in thread
-                Thread.sleep(100);
+                Thread.sleep(40);
             }
         } catch (InterruptedException e) {
             JOptionPane.showMessageDialog(null, "!!!\n" + e, "WARNING", JOptionPane.ERROR_MESSAGE);

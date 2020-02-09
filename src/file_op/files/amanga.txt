@@ -1,0 +1,6 @@
+Sun Feb 09 22:35:08 EAT 2020
+ 
+REGION_ _ _ _: NC
+USER_ _ _ _ _: mr amanga
+DEPARTMENT_ _: SALES
+USER TYPE_ _ : Existing 

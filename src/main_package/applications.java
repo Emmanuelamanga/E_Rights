@@ -350,7 +350,7 @@ public class applications extends javax.swing.JFrame {
 
     private void quit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quit_btnActionPerformed
 //       display control
-        new control().setVisible(true);
+        new login().setVisible(true);
 //        dispose this jframe
         dispose();
     }//GEN-LAST:event_quit_btnActionPerformed
