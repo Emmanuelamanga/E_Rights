@@ -1,5 +1,0 @@
-This is my Data which needs to be written into the file
-This is my content which would be appended at the end of the specified file
-This is first line
-This is the second line
-This is third line

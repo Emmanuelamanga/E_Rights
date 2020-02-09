@@ -24,13 +24,13 @@ public class thread_file implements Runnable {
 //        object of class splash
         splash sp = new splash();
         try {
-//            display the splash
+//         display the splash
             sp.setVisible(true);
             for (int i = 0; i <= 100; i++) {
 //                update the percentage
                 sp.persentagetxt.setText(Integer.toString(i) + "%");
 //                set delay in thread
-                Thread.sleep(40);
+                Thread.sleep(100);
             }
         } catch (InterruptedException e) {
             JOptionPane.showMessageDialog(null, "!!!\n" + e, "WARNING", JOptionPane.ERROR_MESSAGE);

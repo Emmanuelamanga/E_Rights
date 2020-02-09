@@ -28,7 +28,7 @@ class AppendFileDemo2
     	  BufferedWriter bw = new BufferedWriter(fw);
     	  PrintWriter pw = new PrintWriter(bw);
           //This will add a new line to the file content
-    	  pw.println("");
+//    	  pw.println("");
           /* Below three statements would add three 
            * mentioned Strings to the file in new lines.
            */

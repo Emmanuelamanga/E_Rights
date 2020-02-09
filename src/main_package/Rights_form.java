@@ -5,11 +5,7 @@
  */
 package main_package;
 
-import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import file_op.FileOperations;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +13,9 @@ import javax.swing.JOptionPane;
  * @author Doreen Midecha
  */
 public class Rights_form extends javax.swing.JFrame {
+//    variable declarations 
+
+    FileOperations fo;
 
     /**
      * Creates new form Rights_form
@@ -24,8 +23,6 @@ public class Rights_form extends javax.swing.JFrame {
     public Rights_form() {
         initComponents();
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,19 +36,22 @@ public class Rights_form extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         region_combo = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        designation_txt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        right_form_submit_btn = new javax.swing.JButton();
+        exit_right_form_btn = new javax.swing.JButton();
         aprovertxt = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        user_name_txt = new javax.swing.JTextField();
+        dept_combo = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        user_type_combo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USER RIGHTS DETAILS");
+        setUndecorated(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,8 +66,6 @@ public class Rights_form extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "GB", "SALES", "FINANCE", "ADJUDICATOR", "ICT", " " }));
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("REGION :");
@@ -80,9 +78,9 @@ public class Rights_form extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("DESIGNATION :");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        designation_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                designation_txtActionPerformed(evt);
             }
         });
 
@@ -90,11 +88,26 @@ public class Rights_form extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("DEPARTMENT:");
 
-        jButton1.setText("SUBMIT");
+        right_form_submit_btn.setText("SUBMIT");
+        right_form_submit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                right_form_submit_btnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("EXIT");
+        exit_right_form_btn.setText("EXIT");
+        exit_right_form_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_right_form_btnActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setEditable(true);
+        dept_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "GB", "SALES", "FINANCE", "ADJUDICATOR", "ICT", "" }));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("USER TYPE :");
+
+        user_type_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Existing ", "New" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,50 +121,59 @@ public class Rights_form extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dept_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(user_type_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, 0, 175, Short.MAX_VALUE)
-                                    .addComponent(region_combo, 0, 175, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(right_form_submit_btn)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(exit_right_form_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(region_combo, 0, 175, Short.MAX_VALUE)
+                                            .addComponent(designation_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                            .addComponent(user_name_txt))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(aprovertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(region_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(user_type_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(region_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(user_name_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dept_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(designation_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(exit_right_form_btn)
+                    .addComponent(right_form_submit_btn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(aprovertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -173,8 +195,8 @@ public class Rights_form extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,9 +207,69 @@ public class Rights_form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_region_comboActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void designation_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designation_txtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_designation_txtActionPerformed
+
+    private void exit_right_form_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_right_form_btnActionPerformed
+//       clear all the fields
+
+//      close the rights form jframe prompt login
+        dispose();
+//        enable the control buttons
+//        control.newuserbtn.setEnabled(true);
+//        control.existinguserbtn.setEnabled(true);
+
+//        delete last appended line
+
+    }//GEN-LAST:event_exit_right_form_btnActionPerformed
+
+    private void right_form_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_right_form_submit_btnActionPerformed
+//        local variable declaration 
+        String region;
+        String user;
+        String desig;
+        String dept;
+        String usertype;
+        boolean status = false;
+//        get user inputs and variable declarations
+        region = region_combo.getSelectedItem().toString();
+        user = user_name_txt.getText();
+        dept = dept_combo.getSelectedItem().toString();
+        desig = designation_txt.getText();
+        usertype = user_type_combo.getSelectedItem().toString();
+
+//        validate user input
+        if (region.isEmpty() || user.isEmpty() || dept.isEmpty() || desig.isEmpty() || usertype.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Empty values are not accepted !!");
+        } else {
+//            re-format data
+            String reg = "REGION_ _ _ _: " + region;
+            String usr = "USER_ _ _ _ _: " + desig + " " + user;
+            String dp  = "DEPARTMENT_ _: " + dept;
+            String ut  = "USER TYPE_ _ : " + usertype;
+//            create file
+            fo = new FileOperations(user);
+            fo.createFile();
+            
+//          write to file
+            String[] results = {reg, usr, dp, ut};
+            fo.writeToFile(results);
+//            for (String result : results) {
+//               System.out.println(result);
+//            }
+
+//      launch rights_request_form
+            new access().setVisible(true);
+//      dispose  current jframe
+            dispose();
+
+        }
+
+//         fetch rights request form
+//          dispose rights form jframe
+
+    }//GEN-LAST:event_right_form_submit_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,17 +308,19 @@ public class Rights_form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aprovertxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> dept_combo;
+    private javax.swing.JTextField designation_txt;
+    private javax.swing.JButton exit_right_form_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> region_combo;
+    private javax.swing.JButton right_form_submit_btn;
+    private javax.swing.JTextField user_name_txt;
+    private javax.swing.JComboBox<String> user_type_combo;
     // End of variables declaration//GEN-END:variables
 }

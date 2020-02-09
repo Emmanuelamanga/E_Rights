@@ -32,7 +32,8 @@ public class conection {
             Statement stmt = conect.createStatement();
             return stmt;
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(conection.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(conection.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Database services not started","ODBC",JOptionPane.WARNING_MESSAGE);
         }
         return null;
     }
@@ -47,18 +48,15 @@ public class conection {
             try {
                 ResultSet rs = new conection().con().executeQuery(sql);
                 if (rs.next()) {
-                    System.out.println(rs.getInt("user_id"));
-//                    set approver
-               
+//                    System.out.println(rs.getInt("user_id"));               
 //                    return true
                      return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "INCORRECT USERNAME OR PASSWORD", "login error", JOptionPane.WARNING_MESSAGE);
                     return false;                   
                 }
-
             } catch (SQLException ex) {
-                Logger.getLogger(conection.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(conection.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "NO SUCH USER\n" + ex, "login error", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
@@ -69,8 +67,8 @@ public class conection {
     }
 
 //    test 
-    public static void main(String args[]) {
-        conection c = new conection();
-        c.con();
-    }
+//    public static void main(String args[]) {
+//        conection c = new conection();
+//        c.con();
+//    }
 }

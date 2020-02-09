@@ -5,6 +5,7 @@
  */
 package main_package;
 
+import file_op.FileOperations;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.BadLocationException;
@@ -16,11 +17,19 @@ import javax.swing.text.BadLocationException;
 public class control extends javax.swing.JFrame {
 
     public String user;
+    FileOperations fo;
+    
+//    constructors
+ public control(String set_user) {
+        initComponents();
+        this.user = set_user;
+        controlscreen.setText(set_user);
+        commitbtn.setVisible(false);
+    }
 
     /**
      * Creates new form control
      *
-     * @param set_user
      */
     public control() {
         initComponents();
@@ -28,13 +37,7 @@ public class control extends javax.swing.JFrame {
         controlscreen.setText("Logge on user : \n");
     }
 
-    public control(String set_user) {
-        initComponents();
-        this.user = set_user;
-        controlscreen.setText(set_user);
-        commitbtn.setVisible(false);
-    }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,9 +49,7 @@ public class control extends javax.swing.JFrame {
 
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        newuserbtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        existinguserbtn = new javax.swing.JButton();
+        giverigths = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         reportsbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -59,22 +60,17 @@ public class control extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        newuserbtn.setText("NEW USER");
-        newuserbtn.setToolTipText("New Details");
-        newuserbtn.addActionListener(new java.awt.event.ActionListener() {
+        giverigths.setText("Give Rights");
+        giverigths.setToolTipText("New Details");
+        giverigths.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newuserbtnActionPerformed(evt);
+                giverigthsActionPerformed(evt);
             }
         });
-
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        existinguserbtn.setText("EXISTING USER");
-        existinguserbtn.setToolTipText("Search user ");
 
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -103,33 +99,28 @@ public class control extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newuserbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(giverigths, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(existinguserbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(51, 51, 51)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reportsbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(commitbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(reload)))
+                            .addComponent(reportsbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(reload))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(commitbtn)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(reload)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,16 +128,14 @@ public class control extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(newuserbtn)
-                            .addComponent(existinguserbtn)
+                            .addComponent(giverigths)
                             .addComponent(reportsbtn))
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,19 +153,16 @@ public class control extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newuserbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newuserbtnActionPerformed
+    private void giverigthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giverigthsActionPerformed
 //        write to file user:new user
 
 //        launch the rights_form after hiding control
 //        setVisible(false);
-        controlscreen.append("User Type: new user\n");
-
-// disable all the buttons on control 
-        newuserbtn.setEnabled(false);
-        existinguserbtn.setEnabled(false);
+        controlscreen.append("Operation: Give rights\n");
+//       disable all the buttons on control 
 //       launch the rights form 
         new Rights_form().setVisible(true);
-    }//GEN-LAST:event_newuserbtnActionPerformed
+    }//GEN-LAST:event_giverigthsActionPerformed
 
     private void reloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadActionPerformed
         dispose();
@@ -220,14 +206,12 @@ public class control extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton commitbtn;
-    public javax.swing.JTextArea controlscreen;
-    private javax.swing.JButton existinguserbtn;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JTextArea controlscreen;
+    public static javax.swing.JButton giverigths;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton newuserbtn;
     private javax.swing.JButton reload;
     private javax.swing.JButton reportsbtn;
     // End of variables declaration//GEN-END:variables

@@ -9,14 +9,17 @@ package main_package;
  *
  * @author Doreen Midecha
  */
-public class login extends javax.swing.JFrame implements Runnable {    
+public class login extends javax.swing.JFrame implements Runnable {
 //    variable declarations
+
     conection cn;
+
     /*
      * Creates new form login
      */
     public login() {
         this.cn = new conection();
+        cn.con();
         initComponents();
     }
 
@@ -164,18 +167,18 @@ public class login extends javax.swing.JFrame implements Runnable {
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
 //       authenticate log  in
-        if (cn.authenticate(usernametxt.getText(), passwordtxt.getText())) {            
-//            start splash
+        if (cn.authenticate(usernametxt.getText(), passwordtxt.getText())) {
+            //            start splash
             thread_file tf;
             tf = new thread_file();
             tf.start();
 
-        }
-//        close log in frame
-            dispose();
 //        set current user
-        control control = new control("logged in user : " +usernametxt.getText()+ "\n");
-                control.setVisible(true);
+            control cont = new control("logged in user : " + usernametxt.getText() + "\n");
+            cont.setVisible(true);
+        }
+//        close log in frame                
+        dispose();
     }//GEN-LAST:event_loginbtnActionPerformed
 
     private void usernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametxtActionPerformed
