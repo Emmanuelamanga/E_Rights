@@ -1,0 +1,6 @@
+Sun Feb 09 22:15:30 EAT 2020
+ 
+REGION_ _ _ _: KSM
+USER_ _ _ _ _: Rev. Charles Amanga
+DEPARTMENT_ _: FINANCE
+USER TYPE_ _ : Existing 

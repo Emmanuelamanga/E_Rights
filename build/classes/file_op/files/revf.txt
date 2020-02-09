@@ -1,0 +1,6 @@
+Sun Feb 09 22:48:40 EAT 2020
+ 
+REGION_ _ _ _: MSA
+USER_ _ _ _ _: rev revf
+DEPARTMENT_ _: SALES
+USER TYPE_ _ : Existing 
