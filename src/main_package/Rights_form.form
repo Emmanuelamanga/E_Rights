@@ -84,16 +84,16 @@
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="dept_combo" alignment="1" max="32767" attributes="0"/>
-                              <Component id="user_name_txt" alignment="1" max="32767" attributes="0"/>
                               <Component id="user_type_combo" alignment="1" max="32767" attributes="0"/>
+                              <Component id="region_combo" max="32767" attributes="0"/>
+                              <Component id="designation_txt" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="right_form_submit_btn" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="exit_right_form_btn" min="-2" pref="65" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="region_combo" max="32767" attributes="0"/>
-                              <Component id="designation_txt" alignment="0" max="32767" attributes="0"/>
+                              <Component id="user_name_txt" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -120,15 +120,15 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="user_name_txt" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="user_name_txt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dept_combo" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="24" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="designation_txt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -229,11 +229,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="aprovertxt">
         </Component>
-        <Component class="javax.swing.JTextField" name="user_name_txt">
-        </Component>
         <Component class="javax.swing.JComboBox" name="dept_combo">
           <Properties>
-            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="7">
                 <StringItem index="0" value=""/>
@@ -261,9 +258,27 @@
         <Component class="javax.swing.JComboBox" name="user_type_combo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value=" "/>
+                <StringItem index="1" value="Existing User"/>
+                <StringItem index="2" value="New User"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="user_type_comboActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="user_name_txt">
+          <Properties>
+            <Property name="editable" type="boolean" value="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Existing "/>
-                <StringItem index="1" value="New"/>
+                <StringItem index="0" value=" "/>
+                <StringItem index="1" value="Admin"/>
               </StringArray>
             </Property>
           </Properties>

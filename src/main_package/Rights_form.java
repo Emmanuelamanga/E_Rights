@@ -25,7 +25,7 @@ public class Rights_form extends javax.swing.JFrame {
     public Rights_form() {
         initComponents();
         tf = new thread_file_2(new writing_splash(), 40, new access());
-        
+
     }
 
     /**
@@ -48,10 +48,10 @@ public class Rights_form extends javax.swing.JFrame {
         right_form_submit_btn = new javax.swing.JButton();
         exit_right_form_btn = new javax.swing.JButton();
         aprovertxt = new javax.swing.JLabel();
-        user_name_txt = new javax.swing.JTextField();
         dept_combo = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         user_type_combo = new javax.swing.JComboBox<>();
+        user_name_txt = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USER RIGHTS DETAILS");
@@ -106,13 +106,20 @@ public class Rights_form extends javax.swing.JFrame {
             }
         });
 
-        dept_combo.setEditable(true);
         dept_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "GB", "SALES", "FINANCE", "ADJUDICATOR", "ICT", "" }));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("USER TYPE :");
 
-        user_type_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Existing ", "New" }));
+        user_type_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Existing User", "New User" }));
+        user_type_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                user_type_comboActionPerformed(evt);
+            }
+        });
+
+        user_name_txt.setEditable(true);
+        user_name_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Admin" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,15 +138,15 @@ public class Rights_form extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dept_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(user_name_txt, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(user_type_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(region_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(designation_txt)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(right_form_submit_btn)
                                 .addGap(39, 39, 39)
                                 .addComponent(exit_right_form_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(region_combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(designation_txt)))
+                            .addComponent(user_name_txt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(aprovertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -158,13 +165,13 @@ public class Rights_form extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(user_name_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user_name_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dept_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(designation_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -212,13 +219,13 @@ public class Rights_form extends javax.swing.JFrame {
 
     private void exit_right_form_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_right_form_btnActionPerformed
 //       clear all the fields
-        
+
 //      close the rights form jframe prompt login
         dispose();
-        
+
 //        display login frame
         new login().setVisible(true);
-        
+
     }//GEN-LAST:event_exit_right_form_btnActionPerformed
 
     private void right_form_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_right_form_submit_btnActionPerformed
@@ -231,7 +238,7 @@ public class Rights_form extends javax.swing.JFrame {
         boolean status = false;
 //        get user inputs and variable declarations
         region = region_combo.getSelectedItem().toString();
-        user = user_name_txt.getText();
+        user = user_name_txt.getSelectedItem().toString();
         dept = dept_combo.getSelectedItem().toString();
         desig = designation_txt.getText();
         usertype = user_type_combo.getSelectedItem().toString();
@@ -243,10 +250,10 @@ public class Rights_form extends javax.swing.JFrame {
 //            re-format data
             Date dt = new Date();
             String date = dt.toString();
-            String reg = "REGION_ _ _ _: " + region;
-            String usr = "USER_ _ _ _ _: " + desig + " " + user;
-            String dp = "DEPARTMENT_ _: " + dept;
-            String ut = "USER TYPE_ _ : " + usertype;
+            String reg = "REGION_ _ _ _: " + region.toUpperCase();
+            String usr = "USER_ _ _ _ _: " + desig.toUpperCase() + " " + user.toUpperCase();
+            String dp = "DEPARTMENT_ _: " + dept.toUpperCase();
+            String ut = "USER TYPE_ _ : " + usertype.toUpperCase();
             fo = new FileOperations(user);
 //            check if file exists proceed
             if (fo.fileExists()) {
@@ -282,6 +289,16 @@ public class Rights_form extends javax.swing.JFrame {
 //          dispose rights form jframe
 
     }//GEN-LAST:event_right_form_submit_btnActionPerformed
+
+    private void user_type_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_type_comboActionPerformed
+        if (user_type_combo.getSelectedIndex() == 1) {
+            user_name_txt.setEditable(false);
+             user_name_txt.enable(true);
+        } else {
+            user_name_txt.setEditable(true);
+            user_name_txt.enable(false);
+        }
+    }//GEN-LAST:event_user_type_comboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +349,7 @@ public class Rights_form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> region_combo;
     private javax.swing.JButton right_form_submit_btn;
-    private javax.swing.JTextField user_name_txt;
+    private javax.swing.JComboBox<String> user_name_txt;
     private javax.swing.JComboBox<String> user_type_combo;
     // End of variables declaration//GEN-END:variables
 }
