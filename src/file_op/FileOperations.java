@@ -13,10 +13,18 @@ import javax.swing.JOptionPane;
 public class FileOperations {
 
     /**
-     * variable declaration
+     * for file instance
      */
     public File file;
-    public String path;
+
+    /**
+     *path to where the file is saved 
+     */
+    public final String path;
+
+    /**
+     *for new createFile instance
+     */
     public boolean fvar;
 //    constructor
 
@@ -25,6 +33,10 @@ public class FileOperations {
         file = new File(path);
     }
     
+    /**
+     * Confirms if file exists or not
+     * @return boolean
+     */
     public boolean fileExists(){
         return file.exists();
     }
@@ -85,7 +97,7 @@ public class FileOperations {
             }
             pw.close();
 //            JOptionPane.showMessageDialog(null, "Data successfully appended at the end of file", "File", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("Data successfully appended at the end of file");
+//            System.out.println("Data successfully appended at the end of file");
 
         } catch (IOException ioe) {
             JOptionPane.showMessageDialog(null, "Exception Occurred: \n" + ioe, "File", JOptionPane.ERROR_MESSAGE);
@@ -93,6 +105,9 @@ public class FileOperations {
         }
     }
 
+    /**
+     * reads the content of a file
+     */
     public void readFile() {
 
     }
