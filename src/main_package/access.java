@@ -165,17 +165,18 @@ public class access extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))
                         .addGap(57, 57, 57)
-                        .addGroup(acsess_panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(acsess_panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(login_user_pass_chk)
-                            .addComponent(email_chk)
+                            .addGroup(acsess_panel_contentLayout.createSequentialGroup()
+                                .addComponent(email_chk)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(quit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(folder_chk)
                             .addGroup(acsess_panel_contentLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(acsess_panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(quit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(commit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)))))
+                                .addComponent(commit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))))
                     .addGroup(acsess_panel_contentLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -213,9 +214,9 @@ public class access extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, acsess_panel_contentLayout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
+                .addGap(74, 74, 74)
                 .addComponent(quit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(commit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -280,14 +281,14 @@ public class access extends javax.swing.JFrame {
         }
         if (email && (eml_g != null)) {
             eml = "EMAIL_ _ _ _ _ _ : TRUE";
-            eml_g = "EMAIL GROUPS_ _ _: \n" + email_txt.toUpperCase();
+            eml_g = "*EMAIL GROUPS* \n" + email_txt.toUpperCase();
         } else if (email || (eml_g == null)) {
             eml = "EMAIL_ _ _ _ _ _ : TRUE";
             eml_g = "EMAIL GROUPS_ _ _: FALSE";
         }
         if (sf_chk && (folder_g != null)) {
             folder = "HOME FOLDER_ _ _ : TRUE";
-            folder_g = "FOLDER GROUP_ _ _: \n" + sf_txt.toUpperCase();
+            folder_g = "*FOLDER GROUP* \n" + sf_txt.toUpperCase();
         } else if (sf_chk || (folder_g == null)) {
             folder = "HOME FOLDER_ _ _ : TRUE";
             folder_g = "FOLDER GROUP_ _ _: FALSE";

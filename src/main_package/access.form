@@ -62,18 +62,19 @@
                               <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="login_user_pass_chk" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="email_chk" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="email_chk" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="quit_btn" min="-2" pref="55" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="jScrollPane1" alignment="0" min="-2" pref="256" max="-2" attributes="0"/>
                               <Component id="folder_chk" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane2" min="-2" pref="253" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="quit_btn" max="32767" attributes="0"/>
-                                      <Component id="commit_btn" pref="55" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="commit_btn" pref="55" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -127,9 +128,9 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="300" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   <Component id="quit_btn" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="commit_btn" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
