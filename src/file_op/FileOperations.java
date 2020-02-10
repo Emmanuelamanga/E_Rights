@@ -31,11 +31,11 @@ public class FileOperations {
      *logged in user (windows logged in user)
      */
     public String currentUser;
+    
 //    constructor
-
-    public FileOperations(String fn) {
+    public FileOperations() {
         currentUser = System.getProperty("user.name");
-        path = "C:\\Users\\"+currentUser+"\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + fn + ".txt";
+        path = "C:\\Users\\"+currentUser+"\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + currentUser + ".txt";
         file = new File(path);
     }
     
