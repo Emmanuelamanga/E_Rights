@@ -24,17 +24,19 @@ public class conection {
     public Statement con() {
         try {
             //        register driver
-            Class.forName("com.mysql.jdbc.Driver");
+//            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //get connection
             Connection conect;
-            conect = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_rights", "root", "");
+            conect = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_rights?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC", "root", "");
 //            prepare statements
             Statement stmt = conect.createStatement();
             return stmt;
         } catch (ClassNotFoundException | SQLException ex) {
 //            Logger.getLogger(conection.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Database services not started","ODBC",JOptionPane.WARNING_MESSAGE);
-        }
+            JOptionPane.showMessageDialog(null, "Database services not started \n"+ex,"ODBC",JOptionPane.WARNING_MESSAGE); 
+            System.exit(0);
+        }  
         return null;
     }
     
