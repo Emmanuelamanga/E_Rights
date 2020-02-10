@@ -18,32 +18,33 @@ public class FileOperations {
     public File file;
 
     /**
-     *path to where the file is saved 
+     * path to where the file is saved
      */
     public final String path;
 
     /**
-     *for new createFile instance
+     * for new createFile instance
      */
     public boolean fvar;
 
     /**
-     *logged in user (windows logged in user)
+     * logged in user (windows logged in user)
      */
     public String currentUser;
-    
+
 //    constructor
     public FileOperations() {
         currentUser = System.getProperty("user.name");
-        path = "C:\\Users\\"+currentUser+"\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + currentUser + ".txt";
+        path = "C:\\Users\\" + currentUser + "\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + currentUser + ".txt";
         file = new File(path);
     }
-    
+
     /**
      * Confirms if file exists or not
+     *
      * @return boolean
      */
-    public boolean fileExists(){
+    public boolean fileExists() {
         return file.exists();
     }
 
@@ -62,7 +63,6 @@ public class FileOperations {
 //	          System.out.println("File has been created successfully");
                 return true;
             } else {
-
                 JOptionPane.showMessageDialog(null, "File already present at the specified location", "File", JOptionPane.INFORMATION_MESSAGE);
 //	          System.out.println("File already present at the specified location"); 
                 return true;
@@ -78,7 +78,7 @@ public class FileOperations {
     /**
      * writes to an existing file through an array iteration
      *
-     * @param content
+     * @param content content to write 
      */
     public void writeToFile(String[] content) {
 //        variable declaration
@@ -96,7 +96,7 @@ public class FileOperations {
 //This will add a new line to the file content
             if (file.length() != 0) {
                 pw.println("");
-            }            
+            }
 //                 use a loop to write to file
             for (String content1 : content) {
 //                String string = content[i];

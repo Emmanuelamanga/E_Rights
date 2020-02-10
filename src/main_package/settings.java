@@ -20,7 +20,7 @@ public class settings {
 //    set logged on user
     /**
      *
-     * @param user
+     * @return returns the currently logged on user
      */
 //    public void set_usr(String user){
 //        this.logon_user = user;
