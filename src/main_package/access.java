@@ -7,14 +7,16 @@ package main_package;
 
 import file_op.FileOperations;
 import java.awt.Cursor;
+import java.awt.HeadlessException;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Doreen Midecha
  */
 public class access extends javax.swing.JFrame {
-
+    
     FileOperations fo;
     thread_file_2 tf;
 
@@ -23,8 +25,9 @@ public class access extends javax.swing.JFrame {
      */
     public access() {
         initComponents();
-         email_group_txt.setCursor(new Cursor(1));
-         folder_txt.setCursor(new Cursor(1));
+        tf = new thread_file_2(new writing_splash(), 40, new applications());
+        email_group_txt.setCursor(new Cursor(1));
+        folder_txt.setCursor(new Cursor(1));
         email_group_txt.setEditable(false);
         folder_txt.setEditable(false);
     }
@@ -101,8 +104,16 @@ public class access extends javax.swing.JFrame {
         email_group_txt.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         email_group_txt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         email_group_txt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                email_group_txtMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 email_group_txtMouseEntered(evt);
+            }
+        });
+        email_group_txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                email_group_txtKeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(email_group_txt);
@@ -244,7 +255,7 @@ public class access extends javax.swing.JFrame {
         dispose();
 //       display control
         new login().setVisible(true);
-
+        
 
     }//GEN-LAST:event_quit_btnActionPerformed
 
@@ -254,41 +265,56 @@ public class access extends javax.swing.JFrame {
         boolean email = email_chk.isSelected();
         String email_txt = email_group_txt.getText();
         boolean sf_chk = folder_chk.isSelected();
-        String sf_txt = folder_txt.getText();
-
-        String login;
-        String eml;
+        String sf_txt = folder_txt.getText().toString();
+        
+        String login = null;
+        String eml = null;
         String eml_g = email_txt;
-        String folder;
+        String folder = null;
         String folder_g = sf_txt;
-
+        
         if (lup) {
             login = "LOGIN CREDETIALS_: TRUE";
         } else {
             login = "LOGIN CREDETALS_ : FALSE";
         }
-        if (email) {
-            eml = "EMAIL_ _ _ _ _ _ :TRUE";
-            eml_g ="EMAIL GROUPS____:"+email_txt;
-        } else {
-            eml = "EMAIL_ _ _ _ _ _ :FALSE";
+        if (email && (eml_g != null)) {
+            eml = "EMAIL_ _ _ _ _ _ : TRUE";
+            eml_g = "EMAIL GROUPS_ _ _: \n" + email_txt.toUpperCase();
+        } else if (email || (eml_g == null)) {
+            eml = "EMAIL_ _ _ _ _ _ : TRUE";
+            eml_g = "EMAIL GROUPS_ _ _: FALSE";
         }
-        if (sf_chk) {
-            folder = "HOME FOLDER_ _ _: TRUE";
-            folder_g ="FOLDER GROUPD "+sf_txt;
-        } else {
-            folder = "HOME FOLDER_ _ _: FALSE";
+        if (sf_chk && (folder_g != null)) {
+            folder = "HOME FOLDER_ _ _ : TRUE";
+            folder_g = "FOLDER GROUP_ _ _: \n" + sf_txt.toUpperCase();
+        } else if (sf_chk || (folder_g == null)) {
+            folder = "HOME FOLDER_ _ _ : TRUE";
+            folder_g = "FOLDER GROUP_ _ _: FALSE";
         }
         Date date = new Date();
         fo = new FileOperations();
-        try{
+        try {
             if (fo.fileExists()) {
+//                System.out.println("ok 1");
+//                close this frmae 
+                dispose();
+//          start file thread
+                tf.start();
 //                write to file
-            String[] results = {date.toString(), "\nACCESS\n", login, eml, eml_g, folder, folder_g};
-            fo.writeToFile(results);
-        }
-        }catch(Exception e){
-             System.out.println("oops \n"+e);
+                String[] results = {date.toString(), "***ACCESS RIGHTS***", login, eml, eml_g, folder, folder_g};
+                fo.writeToFile(results);
+//                System.out.println("ok 2");
+//                JOptionPane.showMessageDialog(null, "Data successfully appended at the end of file", "File", JOptionPane.INFORMATION_MESSAGE);
+                
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "File Processing Error", "File", HEIGHT);
+                dispose();
+                new login().setVisible(true);
+            }
+            
+        } catch (HeadlessException e) {
+            System.out.println("oops \n" + e);
         }
         
 
@@ -297,6 +323,20 @@ public class access extends javax.swing.JFrame {
     private void email_group_txtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_group_txtMouseEntered
 //        email_group_txt.setCursor(new Cursor(1));
     }//GEN-LAST:event_email_group_txtMouseEntered
+
+    private void email_group_txtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_email_group_txtKeyPressed
+//         if (email_group_txt.isEditable()) {
+//            email_group_txt.append("\n2. ");            
+//        }
+    }//GEN-LAST:event_email_group_txtKeyPressed
+
+    private void email_group_txtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_group_txtMouseClicked
+//       append a one 
+//        if (email_group_txt.isEditable()) {
+//            email_group_txt.append("1. ");            
+//        }
+        
+    }//GEN-LAST:event_email_group_txtMouseClicked
 
     /**
      * @param args the command line arguments
