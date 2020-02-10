@@ -100,7 +100,8 @@ public class FileOperations {
 //                 use a loop to write to file
             for (String content1 : content) {
 //                String string = content[i];
-                pw.println(content1);
+                pw.println(content1); 
+                pw.println("_ _ _ _ _ _ _ _ _ _ _ ");
             }
             pw.close();
 //            JOptionPane.showMessageDialog(null, "Data successfully appended at the end of file", "File", JOptionPane.INFORMATION_MESSAGE);
