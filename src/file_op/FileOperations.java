@@ -26,10 +26,16 @@ public class FileOperations {
      *for new createFile instance
      */
     public boolean fvar;
+
+    /**
+     *logged in user (windows logged in user)
+     */
+    public String currentUser;
 //    constructor
 
     public FileOperations(String fn) {
-        path = "C:\\Users\\Doreen Midecha\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + fn + ".txt";
+        currentUser = System.getProperty("user.name");
+        path = "C:\\Users\\"+currentUser+"\\Documents\\NetBeansProjects\\E_Rights\\src\\file_op\\files\\" + fn + ".txt";
         file = new File(path);
     }
     
@@ -48,6 +54,7 @@ public class FileOperations {
      */
     public boolean createFile() {
         try {
+//                file.mkdirs();
 //            create new file      
             fvar = file.createNewFile();
             if (fvar) {
