@@ -5,17 +5,27 @@
  */
 package main_package;
 
+import file_op.FileOperations;
+import java.awt.HeadlessException;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Doreen Midecha
  */
 public class applications extends javax.swing.JFrame {
 
+    FileOperations fo;
+    thread_file_2 tf;
+
     /**
-     * Creates new form apps
+     * starts components
      */
     public applications() {
         initComponents();
+        tf = new thread_file_2(new writing_splash(), 40, new codes());
     }
 
     /**
@@ -60,6 +70,8 @@ public class applications extends javax.swing.JFrame {
         quit_btn = new javax.swing.JButton();
         app_commit_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("APPLICATIONS");
@@ -265,7 +277,7 @@ public class applications extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        quit_btn.setText("Quit");
+        quit_btn.setText("QUIT X");
         quit_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         quit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,8 +285,11 @@ public class applications extends javax.swing.JFrame {
             }
         });
 
+        app_commit_btn.setBackground(new java.awt.Color(204, 204, 204));
+        app_commit_btn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         app_commit_btn.setText("Commit");
         app_commit_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        app_commit_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         app_commit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 app_commit_btnActionPerformed(evt);
@@ -286,26 +301,32 @@ public class applications extends javax.swing.JFrame {
         jLabel1.setText("APPLICATIONS");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButton1.setText("NEXT >>");
+
+        jButton2.setText("<< BACK");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(quit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(app_commit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(quit_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(app_commit_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -316,13 +337,19 @@ public class applications extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(quit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(app_commit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(quit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(48, 48, 48)
+                .addComponent(app_commit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,23 +382,117 @@ public class applications extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_quit_btnActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void app_commit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_app_commit_btnActionPerformed
         //      local variable declaration and initialization
-        boolean enabled = patel_chk.isEnabled();
-        boolean enabled1 = actisure_chk.isEnabled();
-        boolean enabled2 = insync_chk.isEnabled();
-        boolean enabled3 = manual_pro_chk.isEnabled();
-        boolean enabled4 = easytrack_chk.isEnabled();
-        boolean enabled5 = dme_chk.isEnabled();
-        boolean enabled6 = sshr_chk.isEnabled();
-        boolean enabled7 = pure_chk.isEnabled();
-        boolean enabled8 = help_desk_chk2.isEnabled();
-        boolean enabled9 = sales_in4_chk2.isEnabled();
-        boolean enabled10 = mem_soft_chk2.isEnabled();
-        boolean enabled11 = cryst_report_chk2.isEnabled();
-        boolean enabled12 = sms_portal_chk2.isEnabled();
-        
-        
+        boolean enabled = patel_chk.isSelected();
+        boolean enabled1 = actisure_chk.isSelected();
+        boolean enabled2 = insync_chk.isSelected();
+        boolean enabled3 = manual_pro_chk.isSelected();
+        boolean enabled4 = easytrack_chk.isSelected();
+        boolean enabled5 = dme_chk.isSelected();
+        boolean enabled6 = sshr_chk.isSelected();
+        boolean enabled7 = pure_chk.isSelected();
+        boolean enabled8 = help_desk_chk2.isSelected();
+        boolean enabled9 = sales_in4_chk2.isSelected();
+        boolean enabled10 = mem_soft_chk2.isSelected();
+        boolean enabled11 = cryst_report_chk2.isSelected();
+        boolean enabled12 = sms_portal_chk2.isSelected();
+        Date date = new Date();
+//        String results[] = {"patel","actisuure","insync","mp","easyT","dme","sshr","pure","helpD",
+//        "sales_ini","mem","crystal","sms"};
+        String[] prints = new String[15];
+        prints[0] = "**APPLICATION RIGHTS**";
+        prints[1] = "";
+        if (enabled) {
+            prints[2] = "PATEL_ _ _ _ : TRUE";
+        } else {
+            prints[2] = "PATEL_ _ _ _ : FALSE";
+        }
+        if (enabled1) {
+            prints[3] = "ACTISURE _ _ : TRUE";
+        } else {
+            prints[3] = "ACTISURE _ _ : FALSE";
+        }
+        if (enabled2) {
+            prints[4] = "INSYNC_ _ _ _: TRUE";
+        } else {
+            prints[4] = "INSYNC_ _ _ _: FALSE";
+        }
+        if (enabled3) {
+            prints[5] = "PATEL_ _ _ _ : TRUE";
+        } else {
+            prints[5] = "PATEL_ _ _ _ : FALSE";
+        }
+        if (enabled4) {
+            prints[6] = "EASY TRACK _ : TRUE";
+        } else {
+            prints[6] = "EASY TRACK _ : FALSE";
+        }
+        if (enabled5) {
+            prints[7] = "DME_ _ _ _ _ : TRUE";
+        } else {
+            prints[7] = "DME_ _ _ _ _ : FALSE";
+        }
+        if (enabled6) {
+            prints[8] = "SSHR _ _ _ _ : TRUE";
+        } else {
+            prints[8] = "SSHR _ _ _ _ : FALSE";
+        }
+        if (enabled7) {
+            prints[9] = "PURE_ _ _ _ _: TRUE";
+        } else {
+            prints[9] = "PURE_ _ _ _ _: FALSE";
+        }
+        if (enabled8) {
+            prints[10] = "HELP DESK _ _: TRUE";
+        } else {
+            prints[10] = "HELP DESK _ _: FALSE";
+        }
+        if (enabled9) {
+            prints[11] = "SALES IN4 _ _: TRUE";
+        } else {
+            prints[11] = "SALES IN4 _ _: FALSE";
+        }
+        if (enabled10) {
+            prints[12] = "MEM SOFT_ _ _: TRUE";
+        } else {
+            prints[12] = "MEM SOFT_ _ _: FALSE";
+        }
+        if (enabled11) {
+            prints[13] = "CRYST REPORTS: TRUE";
+        } else {
+            prints[13] = "CRYST REPORTS: FALSE";
+        }
+        if (enabled12) {
+            prints[14] = "SMS PORTAL_ _: TRUE";
+        } else {
+            prints[14] = "SMS PORTAL_ _: FALSE";
+        }
+
+        fo = new FileOperations();
+        try {
+            if (fo.fileExists()) {
+//                close this frmae 
+                dispose();
+//          start file thread
+                tf.start();
+//                write to file
+                try {
+                    fo.writeToFile(prints);
+                } catch (NullPointerException e) {
+                    System.out.print(e);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "File Processing Error", "File", HEIGHT);
+                dispose();
+                new login().setVisible(true);
+            }
+        } catch (HeadlessException e) {
+            System.out.println("oops \n" + e);
+        }
+
+//        new codes().setVisible(true);
 
     }//GEN-LAST:event_app_commit_btnActionPerformed
 
@@ -404,10 +525,8 @@ public class applications extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new applications().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new applications().setVisible(true);
         });
     }
 
@@ -419,6 +538,8 @@ public class applications extends javax.swing.JFrame {
     private javax.swing.JCheckBox easytrack_chk;
     private javax.swing.JCheckBox help_desk_chk2;
     private javax.swing.JCheckBox insync_chk;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -1,0 +1,127 @@
+Mon Feb 10 12:04:05 EAT 2020
+ 
+REGION_ _ _ _: KSM
+USER_ _ _ _ _: RET  RETE
+DEPARTMENT_ _: FINANCE
+USER TYPE_ _ : NEW USER
+
+Mon Feb 10 12:04:40 EAT 2020
+***ACCESS RIGHTS***
+LOGIN CREDETIALS_: TRUE
+EMAIL_ _ _ _ _ _ : TRUE
+*EMAIL GROUPS* 
+1. FINANCE
+2. GB
+HOME FOLDER_ _ _ : TRUE
+*FOLDER GROUP* 
+1. FINANCE
+2. GB
+PATEL_ _ _ _ : FALSE
+ACTISURE _ _ : FALSE
+INSYNC_ _ _ _: FALSE
+PATEL_ _ _ _ : FALSE
+EASY TRACK _ : FALSE
+DME_ _ _ _ _ : FALSE
+SSHR _ _ _ _ : FALSE
+PURE_ _ _ _ _: FALSE
+HELP DESK _ _: FALSE
+SALES IN4 _ _: FALSE
+MEM SOFT_ _ _: FALSE
+CRYST REPORTS: FALSE
+SMS PORTAL_ _: FALSE
+
+Mon Feb 10 15:24:55 EAT 2020
+**APPLICATION RIGHTS**
+PATEL_ _ _ _ : FALSE
+ACTISURE _ _ : FALSE
+INSYNC_ _ _ _: FALSE
+PATEL_ _ _ _ : FALSE
+EASY TRACK _ : TRUE
+DME_ _ _ _ _ : FALSE
+SSHR _ _ _ _ : FALSE
+PURE_ _ _ _ _: FALSE
+HELP DESK _ _: TRUE
+SALES IN4 _ _: FALSE
+MEM SOFT_ _ _: FALSE
+CRYST REPORTS: FALSE
+SMS PORTAL_ _: FALSE
+
+**APPLICATION RIGHTS**
+
+
+PATEL_ _ _ _ : FALSE
+ACTISURE _ _ : TRUE
+INSYNC_ _ _ _: FALSE
+PATEL_ _ _ _ : FALSE
+EASY TRACK _ : FALSE
+DME_ _ _ _ _ : FALSE
+SSHR _ _ _ _ : FALSE
+PURE_ _ _ _ _: FALSE
+HELP DESK _ _: FALSE
+SALES IN4 _ _: TRUE
+MEM SOFT_ _ _: TRUE
+CRYST REPORTS: TRUE
+SMS PORTAL_ _: FALSE
+
+**APPLICATION RIGHTS**
+
+PATEL_ _ _ _ : FALSE
+ACTISURE _ _ : TRUE
+INSYNC_ _ _ _: TRUE
+PATEL_ _ _ _ : TRUE
+EASY TRACK _ : TRUE
+DME_ _ _ _ _ : FALSE
+SSHR _ _ _ _ : FALSE
+PURE_ _ _ _ _: FALSE
+HELP DESK _ _: FALSE
+SALES IN4 _ _: FALSE
+MEM SOFT_ _ _: FALSE
+CRYST REPORTS: FALSE
+SMS PORTAL_ _: FALSE
+
+**APPLICATION RIGHTS**
+_ _ _ _ _ _ _ _ _ _ _ 
+
+_ _ _ _ _ _ _ _ _ _ _ 
+PATEL_ _ _ _ : FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+ACTISURE _ _ : TRUE
+_ _ _ _ _ _ _ _ _ _ _ 
+INSYNC_ _ _ _: FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+PATEL_ _ _ _ : FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+EASY TRACK _ : FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+DME_ _ _ _ _ : FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+SSHR _ _ _ _ : FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+PURE_ _ _ _ _: TRUE
+_ _ _ _ _ _ _ _ _ _ _ 
+HELP DESK _ _: TRUE
+_ _ _ _ _ _ _ _ _ _ _ 
+SALES IN4 _ _: TRUE
+_ _ _ _ _ _ _ _ _ _ _ 
+MEM SOFT_ _ _: FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+CRYST REPORTS: FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+SMS PORTAL_ _: FALSE
+_ _ _ _ _ _ _ _ _ _ _ 
+
+**CODES**
+TELEPHONE CODES_ _: TRUE
+PRINTING CODES_ _ : TRUE
+ALARM CODES _ _ _ : TRUE
+ALARM OFFICE_ _ _ : GAME
+OFFICE KEYS _ _ _ : TRUE
+OPEN OFFICE_ _ _ _: GAME
+
+**CODES**
+TELEPHONE CODES_ _: FALSE
+PRINTING CODES_ _ : FALSE
+ALARM CODES _ _ _ : FALSE
+ALARM OFFICE_ _ _ : FALSE
+OFFICE KEYS _ _ _ : FALSE
+OPEN OFFICE_ _ _ _: FALSE
