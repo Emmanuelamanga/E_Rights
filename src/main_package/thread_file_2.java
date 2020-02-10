@@ -44,7 +44,7 @@ public class thread_file_2 implements Runnable {
 //            dispose the splash frame
             frm.dispose();
 //            display success message
-             JOptionPane.showMessageDialog(null, "Loading Complete", "File", JOptionPane.INFORMATION_MESSAGE);
+//             JOptionPane.showMessageDialog(null, "Loading Complete", "File", JOptionPane.INFORMATION_MESSAGE);
 //           prompt next JFrame
                 nxtjf.setVisible(true);
         } catch (InterruptedException e) {

@@ -254,7 +254,7 @@ public class Rights_form extends javax.swing.JFrame {
             String usr = "USER_ _ _ _ _: " + desig.toUpperCase() + " " + user.toUpperCase();
             String dp = "DEPARTMENT_ _: " + dept.toUpperCase();
             String ut = "USER TYPE_ _ : " + usertype.toUpperCase();
-            fo = new FileOperations(user);
+            fo = new FileOperations();
 //            check if file exists proceed
             if (fo.fileExists()) {
 //                close this frmae 

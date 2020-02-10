@@ -1,6 +1,0 @@
-Sun Feb 09 22:39:53 EAT 2020
- 
-REGION_ _ _ _: NC
-USER_ _ _ _ _: dfs sdf
-DEPARTMENT_ _: ger
-USER TYPE_ _ : Existing 

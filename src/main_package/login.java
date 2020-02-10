@@ -11,6 +11,7 @@ package main_package;
  */
 public class login extends javax.swing.JFrame implements Runnable {
 //    variable declarations
+
     thread_file_2 tf;
     conection cn;
 
@@ -21,7 +22,7 @@ public class login extends javax.swing.JFrame implements Runnable {
         this.cn = new conection();
         cn.con();
         initComponents();
-        this.tf = new thread_file_2(new splash(),40,new Rights_form());
+        this.tf = new thread_file_2(new splash(), 40, new Rights_form());
     }
 
     /**
@@ -125,10 +126,10 @@ public class login extends javax.swing.JFrame implements Runnable {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registerbtn))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(registerbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(forgotpasswordbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -172,9 +173,12 @@ public class login extends javax.swing.JFrame implements Runnable {
             //            start splash
             tf.start();
 //        set current user
-         new control("logged in user : " + usernametxt.getText() + "\n");
+//         new control("logged in user : " + usernametxt.getText() + "\n");
+        } else {
+//        close log in frame 
+            dispose();
+            new login().setVisible(true);
         }
-//        close log in frame                
         dispose();
     }//GEN-LAST:event_loginbtnActionPerformed
 

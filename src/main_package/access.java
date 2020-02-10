@@ -5,11 +5,17 @@
  */
 package main_package;
 
+import file_op.FileOperations;
+import java.util.Date;
+
 /**
  *
  * @author Doreen Midecha
  */
 public class access extends javax.swing.JFrame {
+
+    FileOperations fo;
+    thread_file_2 tf;
 
     /**
      * Creates new form access
@@ -223,12 +229,12 @@ public class access extends javax.swing.JFrame {
     }//GEN-LAST:event_folder_chkActionPerformed
 
     private void quit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quit_btnActionPerformed
-      //        dispose this jframe
-         dispose();  
+        //        dispose this jframe
+        dispose();
 //       display control
         new login().setVisible(true);
-      
-                  
+
+
     }//GEN-LAST:event_quit_btnActionPerformed
 
     private void commit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commit_btnActionPerformed
@@ -238,7 +244,41 @@ public class access extends javax.swing.JFrame {
         String email_txt = email_group_txt.getText();
         boolean sf_chk = folder_chk.isSelected();
         String sf_txt = folder_txt.getText();
-        
+
+        String login;
+        String eml;
+        String eml_g = email_txt;
+        String folder;
+        String folder_g = sf_txt;
+
+        if (lup) {
+            login = "LOGIN CREDETIALS_: TRUE";
+        } else {
+            login = "LOGIN CREDETALS_ : FALSE";
+        }
+        if (email) {
+            eml = "EMAIL_ _ _ _ _ _ :TRUE";
+            eml_g ="EMAIL GROUPS____:"+email_txt;
+        } else {
+            eml = "EMAIL_ _ _ _ _ _ :FALSE";
+        }
+        if (sf_chk) {
+            folder = "HOME FOLDER_ _ _: TRUE";
+            folder_g ="FOLDER GROUPD "+sf_txt;
+        } else {
+            folder = "HOME FOLDER_ _ _: FALSE";
+        }
+        Date date = new Date();
+        fo = new FileOperations();
+        try{
+            if (fo.fileExists()) {
+//                write to file
+            String[] results = {date.toString(), "\nACCESS\n", login, eml, eml_g, folder, folder_g};
+            fo.writeToFile(results);
+        }
+        }catch(Exception e){
+             System.out.println("oops \n"+e);
+        }
         
 
     }//GEN-LAST:event_commit_btnActionPerformed

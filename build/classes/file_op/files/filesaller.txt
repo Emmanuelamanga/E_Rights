@@ -1,6 +1,0 @@
-Sun Feb 09 22:28:38 EAT 2020
- 
-REGION_ _ _ _: NC
-USER_ _ _ _ _: rev filesaller
-DEPARTMENT_ _: GB
-USER TYPE_ _ : Existing 
