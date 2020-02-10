@@ -1,0 +1,6 @@
+Mon Feb 10 18:17:40 EAT 2020
+ 
+REGION_ _ _ _: MSA
+USER_ _ _ _ _: DFS  DF
+DEPARTMENT_ _: FINANCE
+USER TYPE_ _ : NEW USER
