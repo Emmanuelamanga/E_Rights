@@ -22,7 +22,7 @@ public class login extends javax.swing.JFrame implements Runnable {
         this.cn = new conection();
         cn.con();
         initComponents();
-        this.tf = new thread_file_2(new splash(), 40, new Rights_form());
+//        this.tf = new thread_file_2(new splash(), 40, new Rights_form());
     }
 
     /**
@@ -171,7 +171,7 @@ public class login extends javax.swing.JFrame implements Runnable {
 //       authenticate log  in
         if (cn.authenticate(usernametxt.getText(), passwordtxt.getText())) {
             //            start splash
-            tf.start();
+//            tf.start();
 //        set current user
 //         new control("logged in user : " + usernametxt.getText() + "\n");
         } else {
